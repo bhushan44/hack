@@ -20,10 +20,6 @@ export default function Homepage() {
   return (
     <div className="bg-slate-200">
       <Header></Header>
-      <main className="relative flex flex-row flex-wrap justify-center text-slate-500   p-10">
-       
-            homepage
-      </main>
     </div>
   );
 }

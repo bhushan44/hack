@@ -1,11 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import logo from '../images/yoga.jpeg'; // Import logo image
 
 export default function Header() {
   const [data, setData] = useState("");
   const navigation = useNavigate();
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -23,8 +23,7 @@ export default function Header() {
         const userData = await response.json();
         setData(userData.data);
         
-        console.log(userData)
-        // Assuming the backend returns a photo URL
+        console.log(userData);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -32,45 +31,43 @@ export default function Header() {
 
     fetchUserData();
   }, [sessionStorage.getItem("token")]);
+
   return (
-    <div>
-      <header className="bg-slate-600 relative  top-0 w-full h-20 flex flex-row text-white">
-        <p className="left-7 pt-5 pl-20 text-3xl ">All tours</p>
-        <div className=" pt-5 pl-15 flex text-3xl flex-row gap-6 absolute right-20">
-          {" "}
-          {!sessionStorage.getItem("token") ? (
-            <>
-              {" "}
-              <button className=" border-2 border-solid rounded-lg p-1">
-                Login
-              </button>
-              <button className=" border-2 border-solid rounded-lg p-1">
-                Signup
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                className=" border-2 border-solid rounded-lg p-1"
-                onClick={() => {
-                  sessionStorage.removeItem("token");
-                  navigation("/");
-                }}
-              >
-                logout
-              </button>
-              <Link to="/dashboard">
-                <img
-                  src={data?.photo}
-                  alt="bhu"
-                  className="h-[50px] w-[50px] rounded-[50%]"
-                ></img>
-              </Link>
-              <p>{data?.name}</p>
-            </>
-          )}
-        </div>
-      </header>
-    </div>
+    <header className="bg-slate-600 w-full h-20 flex items-center justify-between text-white p-4 shadow-md">
+      <img src={logo} alt="Yoga Logo" className="h-12" />
+      <input 
+        type="text" 
+        placeholder="Search..." 
+        className="flex-1 mx-4 p-2 border border-gray-300 rounded"
+      />
+      <div className="flex items-center gap-4">
+        {!sessionStorage.getItem("token") ? (
+          <>
+            <button className="border-2 border-solid rounded-lg p-2">Login</button>
+            <button className="border-2 border-solid rounded-lg p-2">Signup</button>
+          </>
+        ) : (
+          <>
+            <button
+              className="border-2 border-solid rounded-lg p-2"
+              onClick={() => {
+                sessionStorage.removeItem("token");
+                navigation("/");
+              }}
+            >
+              Logout
+            </button>
+            <Link to="/dashboard">
+              <img
+                src={data?.photo}
+                alt="User"
+                className="h-12 w-12 rounded-full"
+              />
+            </Link>
+            <p>{data?.name}</p>
+          </>
+        )}
+      </div>
+    </header>
   );
 }
