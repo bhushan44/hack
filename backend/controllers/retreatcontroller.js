@@ -32,4 +32,13 @@ async function createretreat(req,res){
    
 
 }
-module.exports={createretreat}
+async function getRetreats(req, res) {
+    try {
+      const data = await Retreat.find();
+      res.status(200).json(data);
+    } catch (error) {
+      res.status(500).json({ message: 'Error retrieving retreats', error: error.message });
+    }
+  }
+  
+module.exports={createretreat,getRetreats}
