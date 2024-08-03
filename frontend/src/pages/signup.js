@@ -50,20 +50,20 @@ export default function Signup() {
           flexDirection: "column",
           padding: "40px",
           borderRadius: "8px",
-          background: "linear-gradient(45deg, #2193b0, #6dd5ed)",
+          borderColor:"#5b2c6f",
         }}
       >
         <h1
-          style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}
+          style={{ textAlign: "center", marginBottom: "20px", color: "#6c3483",  fontSize:"50px", fontFamily:"serif" }}
         >
-          signup
+          SIGNUP
         </h1>
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          enter name
+          ENTER YOUR NAME
         </label>
         <input
           type="text"
-          placeholder="enter your name"
+          placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           style={{
@@ -74,11 +74,11 @@ export default function Signup() {
           }}
         />
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          enter email
+          ENTER EMAIL
         </label>
         <input
           type="email"
-          placeholder="mail"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={{
@@ -89,11 +89,11 @@ export default function Signup() {
           }}
         />
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          enter your password
+          ENTER PASSWORD
         </label>
         <input
           type="text"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           style={{
@@ -104,10 +104,11 @@ export default function Signup() {
           }}
         />
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          conform password
+          CONFIRM PASSWORD
         </label>
         <input
           type="text"
+          placeholder="Password"
           onChange={(e) => {
             setconfromPassword(e.target.value);
           }}
@@ -127,7 +128,7 @@ export default function Signup() {
               padding: "10px",
               border: "none",
               borderRadius: "4px",
-              backgroundColor: "#007bff",
+              backgroundColor: "#6c3483",
               color: "white",
               cursor: "pointer",
               marginRight: "10px",
@@ -141,7 +142,7 @@ export default function Signup() {
               padding: "10px",
               border: "none",
               borderRadius: "4px",
-              backgroundColor: "#007bff",
+              backgroundColor: "#6c3483",
               color: "white",
               cursor: "pointer",
             }}
