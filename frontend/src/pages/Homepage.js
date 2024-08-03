@@ -43,7 +43,7 @@ export default function Homepage() {
       { retreatdata.map((data,index)=>{
         return <RetreatDiv da={data} />
       })
-        }
+      }
       <Footer/>
     </div>
   );
