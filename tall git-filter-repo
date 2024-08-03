@@ -1,0 +1,11 @@
+[33mcommit cd73bc61e58bf6473195f6cab7ec33e575e638e4[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: bhushan <bhushanmandala456@gmail.com>
+Date:   Tue Jul 30 02:04:29 2024 +0530
+
+    Update .gitignore to exclude config files
+
+[33mcommit 738aef8eb361cae753c92665d0b66a6b3b58c481[m
+Author: bhushan <bhushanmandala456@gmail.com>
+Date:   Tue Jul 30 01:52:30 2024 +0530
+
+    backend

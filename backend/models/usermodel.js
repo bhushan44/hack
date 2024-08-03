@@ -2,49 +2,66 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
-const { type } = require("os");
+
 const userschema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "user must have name"],
+    required: [true, "User must have a name"],
   },
   role: {
     type: String,
-    enum: ["user", "guide", "admin", "lead-guide"],
+    enum: ["user", "instructor", "admin", "lead-guide"], // Updated roles
     default: "user",
   },
   email: {
     type: String,
-    required: [true, "user must have email"],
+    required: [true, "User must have an email"],
     unique: true,
-    validate: [validator.isEmail, "please provide a valid mail"],
+    validate: [validator.isEmail, "Please provide a valid email"],
   },
   password: {
     type: String,
-    required: [true, "please provide password"],
+    required: [true, "Please provide a password"],
   },
-  conformPassword: {
+  confirmPassword: {
     type: String,
-    required: [true, "please provide conform password"],
+    required: [true, "Please confirm your password"],
     validate: {
       validator: function (el) {
-        return this.password == el;
+        return this.password === el;
       },
-      message: "passwords are not same",
+      message: "Passwords do not match",
     },
   },
-  changepasswordat: Date,
-  passwordresettoken: String,
-  passwordresetexpiresin: Date,
+  changePasswordAt: Date,
+  passwordResetToken: String,
+  passwordResetExpiresIn: Date,
   active: {
     type: Boolean,
+    default: true, // Default to true for active users
     select: false,
   },
-  photo:{
-    type:String,
-    default:"default.jpg"
-  }
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
+  // Role-specific fields
+  expertise: { // For instructors
+    type: [String],
+    default: [],
+  },
+  certifications: { // For instructors
+    type: [String],
+    default: [],
+  },
+  permissions: { // For admins
+    type: [String],
+    enum: ["read", "write", "delete"], // Example permissions
+    default: ["read"],
+  },
 });
+
+// Encrypt password before saving
 userschema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     return next();
