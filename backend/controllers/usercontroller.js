@@ -22,9 +22,10 @@ function filterObj(obj, ...roles) {
   return newobj;
 }
 async function createuser(req, res) {
-  const { name, email, password, conformPassword, changepasswordat, role } =
+  const { name, email, password, conformPassword, changepasswordat,  } =
     req.body;
   console.log(req.body, "body");
+  
   // const date = new Date(changepasswordat);
   // console.log(date);
   const userdata=await user.findOne({email:req.body.email})

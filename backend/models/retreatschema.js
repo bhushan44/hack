@@ -34,11 +34,11 @@ const RetreatSchema = new mongoose.Schema({
     type: [String], 
     required: [true, 'Program is required'] 
   },
-  // instructors: [{ 
-  //   type: mongoose.Schema.Types.ObjectId, 
-  //   ref: 'Instructor', 
-  //   required: [true, 'At least one instructor is required'] 
-  // }],
+  instructors: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User', 
+    required: [true, 'At least one instructor is required'] 
+  }],
   // foods: [{ 
   //   type: mongoose.Schema.Types.ObjectId, 
   //   ref: 'Food', 

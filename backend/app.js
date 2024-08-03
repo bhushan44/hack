@@ -28,7 +28,10 @@ const {
 } = require("./controllers/authcontroller");
 
 const { sendotp } = require("./controllers/otpcontroller");
-const {createretreat,getRetreats}=require("./controllers/retreatcontroller")
+const {createRetreat,getRetreats}=require("./controllers/retreatcontroller")
+const{createFood,getFoods}=require("./controllers/foodcontroller")
+const {createAccommodation,getAccommodations}=require("./controllers/accomodationcontroller")
+const{createBooking}=require("./controllers/bookingcontroller")
 
 // Load environment variables
 dotenv.config({ path: "./config.env" });
@@ -138,8 +141,13 @@ app.route("/api/v1/resetpassword/:token").post(resetpassword);
 app.route("/api/v1/updatepassword").patch(protect, updatepassword);
 app.route("/api/v1/updateuser").patch(protect, setImage, updateme);
 app.route("/api/v1/deleteuser").delete(protect, deleteme);
-app.route("/api/v1/createretreat").post(setImages,createretreat);
+app.route("/api/v1/createretreat").post(setImages,createRetreat);
 app.route("/api/v1/getretreats").get(getRetreats)
+app.route("/api/v1/createfood").post(setImages,createFood);
+app.route("/api/v1/getfoods").get(getFoods)
+app.route("/api/v1/createaccomodation").post(setImages,createAccommodation);
+app.route("/api/v1/getaccomodations").get(getAccommodations)
+app.route("/api/v1/createbooking").post(protect,createBooking)
 
 app.get("/", (req, res) => {
   res.send("Welcome to the API!");
