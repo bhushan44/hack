@@ -10,6 +10,7 @@ import Retreatcen from "../Components/Retreatcen";
 import Retreatscroll from "../Components/Retreatscroll";
 import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Components/Footer";
 
 export default function Homepage() {
   const navigate=useNavigate()
@@ -24,6 +25,7 @@ export default function Homepage() {
       <Header></Header>
       <Retreatscroll/>
       <Retreatcen />
+      <Footer/>
     </div>
   );
 }
