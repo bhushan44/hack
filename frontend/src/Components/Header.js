@@ -33,18 +33,18 @@ export default function Header() {
   }, [sessionStorage.getItem("token")]);
 
   return (
-    <header className="bg-slate-600 w-full h-20 flex items-center justify-between text-white p-4 shadow-md">
+    <header className="bg-slate-600 w-full h-20 flex items-center justify-between  p-4 shadow-md">
       <img src={logo} alt="Yoga Logo" className="h-12" />
       <input 
         type="text" 
         placeholder="Search..." 
-        className="flex-1 mx-4 p-2 border border-gray-300 rounded"
+        className="flex-1 mx-4 p-2 border border-gray-300 rounded text-black"
       />
       <div className="flex items-center gap-4">
         {!sessionStorage.getItem("token") ? (
           <>
-            <button className="border-2 border-solid rounded-lg p-2">Login</button>
-            <button className="border-2 border-solid rounded-lg p-2">Signup</button>
+            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700">Login</button>
+            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700">Signup</button>
           </>
         ) : (
           <>
