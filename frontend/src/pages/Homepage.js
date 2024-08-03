@@ -7,6 +7,7 @@ import { MdOutlineGroup } from "react-icons/md";
 import { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import Retreatcen from "../Components/Retreatcen";
+import Retreatscroll from "../Components/Retreatscroll";
 import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +22,8 @@ export default function Homepage() {
   return (
     <div className="bg-slate-200">
       <Header></Header>
-      <Retreatcen/>
+      <Retreatscroll/>
+      <Retreatcen />
     </div>
   );
 }
