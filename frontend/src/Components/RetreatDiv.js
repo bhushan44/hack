@@ -1,5 +1,5 @@
 
-function RetreatDiv({da}) {
+function RetreatDiv({da,details}) {
     console.log(da)
     return (
         <div className="flex flex-col items-center border border-gray-300 rounded-lg overflow-hidden shadow-md w-400px m-5 p-5 bg-white text-center">
@@ -12,7 +12,7 @@ function RetreatDiv({da}) {
                 <p className="text-gray-700">{da.description}</p>
             </div>
             <div className="mt-2">
-                <button className="px-5 py-2 border-none rounded bg-blue-500 text-white cursor-pointer transition-colors duration-300 hover:bg-blue-700">
+                <button className="px-5 py-2 border-none rounded bg-blue-500 text-white cursor-pointer transition-colors duration-300 hover:bg-blue-700" onClick={()=>{details(da._id)}}>
                     Show More
                 </button>
             </div>

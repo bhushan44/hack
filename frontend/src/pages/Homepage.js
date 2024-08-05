@@ -41,7 +41,7 @@ export default function Homepage() {
       <Header></Header>
       <Retreatscroll/>
       { retreatdata.map((data,index)=>{
-        return <RetreatDiv da={data} />
+        return <RetreatDiv da={data} key={index} details={details}/>
       })
       }
       <Footer/>

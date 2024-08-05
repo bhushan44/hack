@@ -1,44 +1,83 @@
 import React from "react";
 
-function Retreatcen() {
+function Retreatcen({ data }) {
+  if (!data || !data.features || !data.styles || !data.skillLevel || !data.benefits || !data.program) {
+    return <p>Loading...</p>;
+  }
+  console.log(data.benefits)
   return (
     <div className="flex flex-wrap p-5 max-w-4xl mx-auto border border-gray-300 rounded-lg bg-white">
-      {/* Image Section */}
       <div className="flex-1 p-2 mb-4">
-        <img
-        //   src={}
-          alt="Retreat Center"
-          className="w-full rounded-lg"
-        />
+        {data.images && data.images.length > 0 ? data.images.map((src,index)=>(
+          <img
+            src={src}
+            alt="Retreat Center"
+            className="w-full rounded-lg"
+            key={index}
+          />)
+        ) : (
+          <p>No image available</p>
+        )}
       </div>
-      {/* Main Information Section */}
-      <div className="flex-2 p-2 mb-4">
-        <h2 className="text-2xl text-gray-800 mb-2">AST YOGA@</h2>
+          <div className="flex-2 p-2 mb-4">
+        <h2 className="text-2xl text-gray-800 mb-2">{data.name || 'No Name'}</h2>
         <div className="mb-2">
           <span className="text-gray-600 text-sm">Location</span>
-          <h4 className="text-lg text-gray-600">bhimavaram</h4>
+          <h4 className="text-lg text-gray-600">{data.location || 'No Location'}</h4>
         </div>
         <div className="mb-2">
-          <span className="text-gray-600 text-sm">Date</span>
-          <div className="flex items-center">
-            <h4 className="text-lg text-gray-600">jan</h4>
-            <button className="ml-2 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-700">More</button>
-          </div>
+          <span className="text-gray-600 text-sm">Description</span>
+          <p className="text-base text-gray-600">{data.description || 'No Description'}</p>
         </div>
         <div className="mb-2">
-          <p className="text-gray-600 text-base">tis is locted in bhimavaram</p>
-          <div className="mt-2">
-            <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
-              Additional details <span>@</span>
-            </button>
-          </div>
+          <span className="text-gray-600 text-sm">Features</span>
+          <ul className="list-disc pl-5 text-gray-600">
+            {data.features.map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="mb-2">
+          <span className="text-gray-600 text-sm">Styles</span>
+          <ul className="list-disc pl-5 text-gray-600">
+            {data.styles.map((style, index) => (
+              <li key={index}>{style}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="mb-2">
+          <span className="text-gray-600 text-sm">Skill Level</span>
+          <ul className="list-disc pl-5 text-gray-600">
+            {data.skillLevel.map((level, index) => (
+              <li key={index}>{level}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="mb-2">
+          <span className="text-gray-600 text-sm">Benefits</span>
+          <ul className="list-disc pl-5 text-gray-600">
+            {data.benefits && data.benefits.length > 0 ? (
+              data.benefits.map((benefit, index) => (
+                <li key={index}>{benefit}</li>
+              ))
+            ) : (
+              <li>No benefits available</li>
+            )}
+          </ul>
+        </div>
+        <div className="mb-2">
+          <span className="text-gray-600 text-sm">Program</span>
+          <ul className="list-disc pl-5 text-gray-600">
+            {data.program.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
         </div>
       </div>
-      {/* Pricing and Reviews Section */}
       <div className="flex-1 p-2 text-center">
         <h2 className="text-2xl text-gray-800 mb-2">FROM</h2>
         <div className="text-4xl text-pink-600 mb-2">
-          <span>$</span><span>1700</span>
+          <span>$</span><span>{data.price}</span>
         </div>
         <div className="text-gray-600 mb-2">
           <span>*</span><span>FREE Cancellation</span>

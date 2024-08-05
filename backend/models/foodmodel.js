@@ -9,12 +9,12 @@ const FoodSchema = new mongoose.Schema({
     type: [String], // Array of descriptions
     required: [true, 'Food description is required'] 
   },
-  photos: [String], // Array of photo URLs
-  retreatcenter: { 
-    type: mongoose.Schema.Types.ObjectId, // Reference to the Retreat model
-    ref: 'Retreat', // The name of the model being referenced
-    required: [true, 'Retreat reference is required'] 
-  }
+  photos: [String] // Array of photo URLs
+  // retreatcenter: { 
+  //   type: mongoose.Schema.Types.ObjectId, // Reference to the Retreat model
+  //   ref: 'Retreat', // The name of the model being referenced
+  //   required: [true, 'Retreat reference is required'] 
+  // }
 });
 
 module.exports = mongoose.model('Food', FoodSchema);

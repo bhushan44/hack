@@ -28,7 +28,7 @@ const {
 } = require("./controllers/authcontroller");
 
 const { sendotp } = require("./controllers/otpcontroller");
-const {createRetreat,getRetreats}=require("./controllers/retreatcontroller")
+const {createRetreat,getRetreats,getRetreatData}=require("./controllers/retreatcontroller")
 const{createFood,getFoods}=require("./controllers/foodcontroller")
 const {createAccommodation,getAccommodations}=require("./controllers/accomodationcontroller")
 const{createBooking}=require("./controllers/bookingcontroller")
@@ -148,7 +148,9 @@ app.route("/api/v1/getfoods").get(getFoods)
 app.route("/api/v1/createaccomodation").post(setImages,createAccommodation);
 app.route("/api/v1/getaccomodations").get(getAccommodations)
 app.route("/api/v1/createbooking").post(protect,createBooking)
-
+app.route("/api/:userid").get(getRetreatData)
+app.route("/api/v1/getinstructor").get()
+app.route("/api/v1/createinstructor").post()
 app.get("/", (req, res) => {
   res.send("Welcome to the API!");
 });
