@@ -7,10 +7,10 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setconfromPassword] = useState("");
+  const [conformPassword, setconfromPassword] = useState("");
   const navigation = useNavigate();
   async function handlesubmit() {
-    if (password !== confirmPassword) {
+    if (password !== conformPassword) {
       window.alert("Passwords do not match");
       return;
     }
@@ -108,7 +108,7 @@ export default function Signup() {
           }}
         />
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          confirm password
+          conform password
         </label>
         <input
           type="text"
