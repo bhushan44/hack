@@ -9,7 +9,6 @@ export default function Login() {
 
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
-  //   const navigate = useNavigate();
   async function handlesubmit() {
     try {
       const res = await fetch("http://localhost:5000/api/v1/login", {
@@ -137,6 +136,7 @@ export default function Login() {
                 color: "white",
                 cursor: "pointer",
               }}
+              onClick={()=>{navigate('/signup')}}
             >
               signup
             </button>

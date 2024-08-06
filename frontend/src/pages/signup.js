@@ -7,16 +7,20 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [conformPassword, setconfromPassword] = useState("");
+  const [confirmPassword, setconfromPassword] = useState("");
   const navigation = useNavigate();
   async function handlesubmit() {
+    if (password !== confirmPassword) {
+      window.alert("Passwords do not match");
+      return;
+    }
     try {
       const response = await fetch("http://localhost:5000/api/v1/users", {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password, conformPassword }),
+        body: JSON.stringify({ name, email, password}),
       });
 
       const result = await response.json();
@@ -104,7 +108,7 @@ export default function Signup() {
           }}
         />
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          conform password
+          confirm password
         </label>
         <input
           type="text"
@@ -121,7 +125,7 @@ export default function Signup() {
         <br></br>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <button
-            onClick={handlesubmit}
+            onClick={()=>handlesubmit()}
             style={{
               flex: 1,
               padding: "10px",
@@ -136,6 +140,7 @@ export default function Signup() {
             Submit
           </button>
           <button
+            onClick={() => navigation("/login")}
             style={{
               flex: 1,
               padding: "10px",

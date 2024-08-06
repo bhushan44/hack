@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from '../images/yoga.jpeg'; // Import logo image
+import logo from '../images/yoga.jpeg';
 
 export default function Header() {
   const [data, setData] = useState("");
   const navigation = useNavigate();
+  function signup(){
+    navigation('/signup')
+  }
+  function login(){
+    navigation('/login')
+  }
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -43,8 +49,8 @@ export default function Header() {
       <div className="flex items-center gap-4">
         {!sessionStorage.getItem("token") ? (
           <>
-            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700">Login</button>
-            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700">Signup</button>
+            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700" onClick={()=>{login()}}>Login</button>
+            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700" onClick={()=>{signup()}}>Signup</button>
           </>
         ) : (
           <>
