@@ -33,7 +33,6 @@ const{createFood,getFoods}=require("./controllers/foodcontroller")
 const {createAccommodation,getAccommodations}=require("./controllers/accomodationcontroller")
 const{createBooking}=require("./controllers/bookingcontroller")
 const {getinstructor,createinstructor}=require("./controllers/instructorController")
-const {getuser,getusers,createuser}=require("./controllers/usercontroller")
 
 // Load environment variables
 dotenv.config({ path: "./config.env" });
