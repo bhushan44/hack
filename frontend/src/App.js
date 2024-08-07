@@ -9,8 +9,6 @@ import Otp from "../src/Components/Otp";
 import TourOverView from "./pages/TourOverView";
 import Bookings from "./pages/Bookings";
 import Dashboard from "./pages/Dashboard";
-import Updatepassword from "./pages/updatepassword";
-import Update from "./pages/update";
 import ForgetPassword from "./pages/update";
 import UpdatePassword from "./pages/updatepassword";
 

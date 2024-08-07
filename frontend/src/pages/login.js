@@ -72,8 +72,7 @@ export default function Login() {
             gap: "20px",
             background: "linear-gradient(45deg, #2193b0, #6dd5ed)",
             borderRadius: "8px",
-          }}
-        >
+          }}>
           <h1 style={{ textAlign: "center" }}> login</h1>
           <div>
             {" "}
@@ -97,7 +96,6 @@ export default function Login() {
               }}
             ></input>
           </div>
-
           <div>
             <label style={{ display: "block" }}>enter your password</label>
             <input
@@ -139,6 +137,20 @@ export default function Login() {
               onClick={()=>{navigate('/signup')}}
             >
               signup
+            </button>
+            <button
+              style={{
+                flex: 1,
+                padding: "10px",
+                border: "none",
+                borderRadius: "4px",
+                backgroundColor: "#007bff",
+                color: "white",
+                cursor: "pointer",
+              }}
+              onClick={()=>{navigate('/forgetpassword')}}
+            >
+              forgetpassword
             </button>
           </div>
         </div>
