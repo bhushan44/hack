@@ -23,7 +23,7 @@ const userschema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a password"],
   },
-  confirmPassword: {
+  conformPassword: {
     type: String,
     required: [true, "Please confirm your password"],
     validate: {
