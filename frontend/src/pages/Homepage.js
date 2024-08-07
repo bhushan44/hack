@@ -1,6 +1,5 @@
 import React from "react";
 import first from "../images/first.jpeg";
-import { CiLocationOn } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
 import { IoFlagOutline } from "react-icons/io5";
 import { MdOutlineGroup } from "react-icons/md";
@@ -35,7 +34,6 @@ export default function Homepage() {
   useEffect(() => {
     retData();
   }, []);
-  console.log(retreatdata);
   return (
     <div className="bg-slate-200">
       <Header></Header>

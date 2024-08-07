@@ -1,5 +1,5 @@
 import React from "react";
-
+import { CiLocationOn } from "react-icons/ci";
 function Retreatcen({ data }) {
   if (!data || !data.features || !data.styles || !data.skillLevel || !data.benefits || !data.program) {
     return <p>Loading...</p>;
@@ -22,7 +22,8 @@ function Retreatcen({ data }) {
           <div className="flex-2 p-2 mb-4">
         <h2 className="text-2xl text-gray-800 mb-2">{data.name || 'No Name'}</h2>
         <div className="mb-2">
-          <span className="text-gray-600 text-sm">Location</span>
+          {/* <span className="text-gray-600 text-sm">location</span> */}
+          <CiLocationOn/>
           <h4 className="text-lg text-gray-600">{data.location || 'No Location'}</h4>
         </div>
         <div className="mb-2">
