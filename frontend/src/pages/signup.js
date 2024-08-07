@@ -10,13 +10,17 @@ export default function Signup() {
   const [conformPassword, setconfromPassword] = useState("");
   const navigation = useNavigate();
   async function handlesubmit() {
+    if (password !== conformPassword) {
+      window.alert("Passwords do not match");
+      return;
+    }
     try {
       const response = await fetch("http://localhost:5000/api/v1/users", {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password, conformPassword }),
+        body: JSON.stringify({ name, email, password,conformPassword}),
       });
 
       const result = await response.json();
@@ -50,20 +54,20 @@ export default function Signup() {
           flexDirection: "column",
           padding: "40px",
           borderRadius: "8px",
-          background: "linear-gradient(45deg, #2193b0, #6dd5ed)",
+          borderColor:"#5b2c6f",
         }}
       >
         <h1
-          style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}
+          style={{ textAlign: "center", marginBottom: "20px", color: "#6c3483",  fontSize:"50px", fontFamily:"serif" }}
         >
-          signup
+          SIGNUP
         </h1>
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          enter name
+          ENTER YOUR NAME
         </label>
         <input
           type="text"
-          placeholder="enter your name"
+          placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           style={{
@@ -74,11 +78,11 @@ export default function Signup() {
           }}
         />
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          enter email
+          ENTER EMAIL
         </label>
         <input
           type="email"
-          placeholder="mail"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={{
@@ -89,11 +93,11 @@ export default function Signup() {
           }}
         />
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          enter your password
+          ENTER PASSWORD
         </label>
         <input
           type="text"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           style={{
@@ -104,10 +108,11 @@ export default function Signup() {
           }}
         />
         <label style={{ marginBottom: "5px", color: "darkblue" }}>
-          conform password
+          CONFIRM PASSWORD
         </label>
         <input
           type="text"
+          placeholder="Password"
           onChange={(e) => {
             setconfromPassword(e.target.value);
           }}
@@ -121,13 +126,13 @@ export default function Signup() {
         <br></br>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <button
-            onClick={handlesubmit}
+            onClick={()=>handlesubmit()}
             style={{
               flex: 1,
               padding: "10px",
               border: "none",
               borderRadius: "4px",
-              backgroundColor: "#007bff",
+              backgroundColor: "#6c3483",
               color: "white",
               cursor: "pointer",
               marginRight: "10px",
@@ -136,12 +141,13 @@ export default function Signup() {
             Submit
           </button>
           <button
+            onClick={() => navigation("/login")}
             style={{
               flex: 1,
               padding: "10px",
               border: "none",
               borderRadius: "4px",
-              backgroundColor: "#007bff",
+              backgroundColor: "#6c3483",
               color: "white",
               cursor: "pointer",
             }}

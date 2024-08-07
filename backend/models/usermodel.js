@@ -10,7 +10,7 @@ const userschema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["user", "instructor", "admin", "lead-guide"], // Updated roles
+    enum: ["user", "instructor", "admin"],
     default: "user",
   },
   email: {
@@ -67,7 +67,7 @@ userschema.pre("save", async function (next) {
     return next();
   }
   this.password = await bcrypt.hash(this.password, 12);
-  this.conformPassword = undefined;
+  this.confirmPassword = undefined;
   next();
 });
 

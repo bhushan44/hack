@@ -30,10 +30,10 @@ const ForgetPassword = () => {
 
   return (
     <div style={{ textAlign: 'center', margin: '20px' }}>
-      <h2 style={{ marginBottom: '20px' }}>Forgot Your Password?</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'inline-block', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>
+      <h2 style={{ marginBottom: '20px', color:'#6c3483'}}>Forgot Your Password?</h2>
+      <form onSubmit={handleSubmit} style={{ display: 'inline-block', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' ,boxShadow:'0 4px 12px rgba(0, 0, 0, 0.1)'}}>
         <div style={{ marginBottom: '15px' }}>
-          <label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>Email:</label>
+          <label htmlFor="email" style={{ display: 'block', marginBottom: '5px',color:'#6c3483' }}>Email:</label>
           <input
             type="email"
             id="email"
@@ -45,7 +45,7 @@ const ForgetPassword = () => {
         </div>
         <button
           type="submit"
-          style={{ padding: '10px 15px', border: 'none', borderRadius: '4px', backgroundColor: '#007bff', color: '#fff', cursor: 'pointer' }}
+          style={{ padding: '10px 15px', border: 'none', borderRadius: '4px', backgroundColor: '#6c3483', color: '#fff', cursor: 'pointer' }}
         >
           Send Reset Link
         </button>
