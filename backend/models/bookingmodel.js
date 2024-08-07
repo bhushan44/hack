@@ -28,9 +28,8 @@ const BookingSchema = new mongoose.Schema({
     type: Number, 
     required: [true, 'Number of guests is required'] 
   },
-//   specialRequests: { 
-//     type: String // Optional field for special requests
-//   },
+//  
+
   status: { 
     type: String, 
     enum: ['Pending', 'Confirmed', 'Cancelled'], 

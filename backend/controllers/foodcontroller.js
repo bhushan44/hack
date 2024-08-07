@@ -5,14 +5,15 @@ async function createFood(req, res) {
   const photos = req.files.map(file => file.location);
    // or file.path depending on your setup
 
-  let { type, description } = req.body;
+  let { type, description,retreatcenter } = req.body;
   type=type.split(',').map((t)=>t.trim())
 
   try {
     const foodData = new Food({
       type,
       description,
-      photos
+      photos,
+      retreatcenter
     });
 
     const data = await foodData.save();
