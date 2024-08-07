@@ -69,5 +69,13 @@ async function getRetreats(req, res) {
     res.status(500).json({ message: 'Error retrieving retreats', error: error.message });
   }
 }
+async function getRetreatData(req,res){
+  try{
+    const data=await Retreat.findById(req.params.userid)
+    res.status(200).json(data);
+  }catch(e){
+    console.log(e)
+  }
+}
 
-module.exports = { createRetreat, getRetreats };
+module.exports = { createRetreat, getRetreats,getRetreatData};
