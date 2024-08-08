@@ -38,12 +38,11 @@ async function createuser(req, res) {
   }
   const newuser = new user({
     name,
-    role:"admin",
+    role,
     email,
     password,
     conformPassword,
     changepasswordat,
-    role:"admin"
   });
   newuser
     .save()
