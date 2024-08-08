@@ -131,6 +131,7 @@ export default function Login() {
               submit
             </button>
             <button
+              onClick={()=>{navigate("/forgetpassword")}}
               style={{
                 flex: 1,
                 padding: "10px",
@@ -141,7 +142,7 @@ export default function Login() {
                 cursor: "pointer",
               }}
             >
-              signup
+              ForgetPassword
             </button>
           </div>
         </div>
