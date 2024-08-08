@@ -3,7 +3,7 @@ const Retreat = require("../models/retreatschema");
 async function createRetreat(req, res) {
   try {
     // Get image URLs from files
-    const urls = req.files.map(file => file.location);
+    const urls = req.files?req.files.map(file => file.location):[];
 
     // Destructure input values without default values
     const { 
@@ -15,7 +15,8 @@ async function createRetreat(req, res) {
       skillLevel, 
       benefits, 
       program, 
-      price 
+      price,
+      
     } = req.body;
 
     // Check if all required fields are present
@@ -42,7 +43,8 @@ async function createRetreat(req, res) {
       program: programArray,
       price: parseFloat(price), // Ensure price is a number
       images: urls,
-      instructors:["66882baab889bd22677f0466"]
+      instructors:["66882baab889bd22677f0466"],
+
     });
 
     // Save data and respond
@@ -69,5 +71,13 @@ async function getRetreats(req, res) {
     res.status(500).json({ message: 'Error retrieving retreats', error: error.message });
   }
 }
+async function getRetreatData(req,res){
+  try{
+    const data=await Retreat.findById(req.params.userid)
+    res.status(200).json(data);
+  }catch(e){
+    console.log(e)
+  }
+}
 
-module.exports = { createRetreat, getRetreats };
+module.exports = { createRetreat, getRetreats,getRetreatData};

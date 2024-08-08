@@ -28,10 +28,11 @@ const {
 } = require("./controllers/authcontroller");
 
 const { sendotp } = require("./controllers/otpcontroller");
-const {createRetreat,getRetreats}=require("./controllers/retreatcontroller")
+const {createRetreat,getRetreats,getRetreatData}=require("./controllers/retreatcontroller")
 const{createFood,getFoods}=require("./controllers/foodcontroller")
 const {createAccommodation,getAccommodations}=require("./controllers/accomodationcontroller")
 const{createBooking}=require("./controllers/bookingcontroller")
+const {getinstructor,createinstructor}=require("./controllers/instructorController")
 
 // Load environment variables
 dotenv.config({ path: "./config.env" });
@@ -129,7 +130,6 @@ const upload2 = tourUpload.fields([
 app.use(express.json());
 app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "/public/images")));
-
 // Define routes
 app.route("/api/v1/users").get(protect, getusers).post(createuser);
 app.route("/api/v1/user").get(protect, getuser);
@@ -148,7 +148,9 @@ app.route("/api/v1/getfoods").get(getFoods)
 app.route("/api/v1/createaccomodation").post(setImages,createAccommodation);
 app.route("/api/v1/getaccomodations").get(getAccommodations)
 app.route("/api/v1/createbooking").post(protect,createBooking)
-
+app.route("/api/:userid").get(getRetreatData)
+app.route("/api/v1/getinstructor").get(getinstructor)
+app.route("/api/v1/createinstructor").post(setImage,createinstructor)
 app.get("/", (req, res) => {
   res.send("Welcome to the API!");
 });
@@ -158,4 +160,4 @@ app.listen(5000, () => {
   console.log("App listening on port 5000");
 });
 
-module.exports=app
+module.exports=app;

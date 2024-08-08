@@ -19,6 +19,7 @@ const ForgetPassword = () => {
 
       if (response.ok) {
         setMessage('Password reset link has been sent to your email.');
+        setTimeout(()=>{navigate("/login")},3000)
         
       } else {
         setMessage('Failed to send password reset link. Please try again.');
