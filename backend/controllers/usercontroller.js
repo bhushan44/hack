@@ -38,7 +38,7 @@ async function createuser(req, res) {
   }
   const newuser = new user({
     name,
-    role:"admin",
+    // role:"admin",
     email,
     password,
     conformPassword,
@@ -151,6 +151,13 @@ async function signin(req, res) {
         status: "fail",
         message: "invalid user or password",
       });
+    }
+    if(result.role!==req.body.role){
+      return res.json({
+        status:"fail",
+        message:"invalid user"
+      })
+
     }
     const token = tokencreation(result._id);
     res.json({
