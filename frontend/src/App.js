@@ -12,6 +12,8 @@ import Dashboard from "./pages/Dashboard";
 import ForgetPassword from "./pages/update";
 import UpdatePassword from "./pages/updatepassword";
 import Review from "./pages/Review";
+import AdminDashboard from "./pages/AdminDashboard";
+import RetreatDashboard from "./pages/RetreatDashboard";
 // import Reviews from "./Components/Reviews";
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
             <Route path="/bookings" element={<Bookings></Bookings>}/>
             {/* <Route path="/reviews" element={<Reviews/>}></Route> */}
             <Route path="/review" element={<Review/>}></Route>
+            <Route path="/admin" element={<AdminDashboard></AdminDashboard>}/>
+            <Route path="/retreat" element={<RetreatDashboard></RetreatDashboard>}/>
           </Routes>
         </BrowserRouter>
         {/* <Signup></Signup> */}

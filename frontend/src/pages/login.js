@@ -32,7 +32,7 @@ export default function Login() {
         // setState(true);
         sessionStorage.setItem("token", data.token);
         // console.log(localStorage.getItem("token"));
-        navigate("/");
+        navigate('/')
       }
 
       //   if (data.status === "failure" && data.statusCode === 400) {

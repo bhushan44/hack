@@ -4,6 +4,7 @@ const Otp = require("../models/otpmodel");
 const { sendemail } = require("../utils/email");
 const user = require("../models/usermodel");
 const jswebtoken = require("jsonwebtoken");
+const { nextTick } = require("process");
 dotenv.config({ path: "../config.env" });
 function tokencreation(id) {
   const token = jswebtoken.sign({ id: id }, process.env.SECRET, {
@@ -132,7 +133,7 @@ async function deleteme(req, res) {
 //     });
 //   }
 // }
-async function signin(req, res) {
+async function signin(req, res,next) {
   const { email, password } = req.body;
   try {
     if (!email || !password) {
@@ -143,8 +144,6 @@ async function signin(req, res) {
     }
     console.log("E", email);
     const result = await user.findOne({ email });
-    console.log(result.password);
-
     if (!result || !(await result.correctpassword(password, result.password))) {
       return res.json({
         status: "fail",
@@ -157,7 +156,7 @@ async function signin(req, res) {
       token,
     });
     // req.user = result;
-    // console.log(req.user);
+    // next()
   } catch (e) {
     res.json({
       status: "error",
