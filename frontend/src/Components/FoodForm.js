@@ -5,7 +5,7 @@ const FoodForm = () => {
     type: '',
     description: '',
     images: [],
-    retreatcenter: ''  // Added retreatcenter to the initial state
+    retreatcenter: '' 
   });
 
   const handleChange = (e) => {
@@ -30,10 +30,10 @@ const FoodForm = () => {
     const form = new FormData();
     form.append('type', formData.type);
     form.append('description', formData.description);
-    form.append('retreatcenter', formData.retreatcenter);  // Added retreatcenter to form data
+    form.append('retreatcenter', formData.retreatcenter);  
 
     formData.images.forEach((file) => {
-      form.append('images', file);  // Corrected from 'photos' to 'images'
+      form.append('images', file);  
     });
 
     try {

@@ -14,6 +14,9 @@ import UpdatePassword from "./pages/updatepassword";
 import Review from "./pages/Review";
 import AdminDashboard from "./pages/AdminDashboard";
 import RetreatDashboard from "./pages/RetreatDashboard";
+import AccommodationForm from "./Components/AccomdationForm";
+import FoodForm from "./Components/FoodForm";
+import RetreatForm from "./Components/RetreatForm";
 // import Reviews from "./Components/Reviews";
 
 function App() {
@@ -36,6 +39,9 @@ function App() {
             <Route path="/review" element={<Review/>}></Route>
             <Route path="/admin" element={<AdminDashboard></AdminDashboard>}/>
             <Route path="/retreat" element={<RetreatDashboard></RetreatDashboard>}/>
+            <Route path="/accomdation" element={<AccommodationForm/>}/>
+            <Route path="/food" element={<FoodForm/>}/>
+            <Route path="/retreatform" element={<RetreatForm/>}/>
           </Routes>
         </BrowserRouter>
       </div>
