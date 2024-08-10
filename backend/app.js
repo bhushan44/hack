@@ -31,6 +31,7 @@ const { sendotp } = require("./controllers/otpcontroller");
 const {
   createRetreat,
   getRetreats,
+  getRetreatData,
 } = require("./controllers/retreatcontroller");
 const { createFood, getFoods } = require("./controllers/foodcontroller");
 const {
@@ -38,6 +39,11 @@ const {
   getAccommodations,
 } = require("./controllers/accomodationcontroller");
 const { createBooking } = require("./controllers/bookingcontroller");
+const {
+  getinstructor,
+  createinstructor,
+} = require("./controllers/instructorController");
+const { sign } = require("jsonwebtoken");
 
 // Load environment variables
 dotenv.config({ path: "./config.env" });
@@ -137,12 +143,11 @@ const upload2 = tourUpload.fields([
 app.use(express.json());
 app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "/public/images")));
-
 // Define routes
 app.route("/api/v1/users").get(protect, getusers).post(createuser);
 app.route("/api/v1/user").get(protect, getuser);
-app.route("/api/v1/sendotp").post(sendotp);
-app.route("/api/v1/login").post(signin);
+// app.route("/api/v1/sendotp").post(sendotp);
+app.route("/api/v1/login").post(signin).get(protect, getuser);
 app.route("/api/v1/signin").post(login);
 app.route("/api/v1/forgetpassword").post(forgetpasswordresettoken);
 app.route("/api/v1/resetpassword/:token").post(resetpassword);

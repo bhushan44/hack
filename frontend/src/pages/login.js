@@ -32,7 +32,7 @@ export default function Login() {
         // setState(true);
         sessionStorage.setItem("token", data.token);
         // console.log(localStorage.getItem("token"));
-        navigate("/");
+        navigate('/')
       }
 
       //   if (data.status === "failure" && data.statusCode === 400) {
@@ -70,18 +70,17 @@ export default function Login() {
             // alignItems: "center",
             // justifyContent: "center",
             padding: "40px",
-            gap: "20px",
-            background: "linear-gradient(45deg, #2193b0, #6dd5ed)",
+            gap: "10px",
+            // background: "linear-gradient(45deg, #2193b0, #6dd5ed)",
             borderRadius: "8px",
           }}
         >
-          <h1 style={{ textAlign: "center" }}> login</h1>
+          <h1 style={{ textAlign: "center" ,color: "#6c3483",  fontSize:"50px", fontFamily:"serif"}}>LOGIN</h1>
           <div>
-            {" "}
+            {/* {" "} */}
             <label style={{ display: "block", color: "darkblue" }}>
-              enter email
+             ENTER EMAIL
             </label>
-            <br />
             <input
               style={{
                 padding: "10px",
@@ -91,7 +90,7 @@ export default function Login() {
                 width: "300px",
               }}
               type="email"
-              placeholder="mail"
+              placeholder="Email"
               value={email}
               onChange={(e) => {
                 setmail(e.target.value);
@@ -100,12 +99,16 @@ export default function Login() {
           </div>
 
           <div>
-            <label style={{ display: "block" }}>enter your password</label>
+            <label style={{color:"darkblue", display: "block" }}>ENTER YOUR PASSWORD</label>
             <input
               type="text"
-              placeholder="password"
+              placeholder="Password"
               value={password}
-              style={{ display: "block", width: "100%" }}
+              style={{ display: "block", width: "100%" , padding: "10px",
+                marginBottom: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                width: "300px",}}
               onChange={(e) => {
                 setpassword(e.target.value);
               }}
@@ -119,7 +122,7 @@ export default function Login() {
                 padding: "10px",
                 border: "none",
                 borderRadius: "4px",
-                backgroundColor: "#007bff",
+                backgroundColor: "#6c3483",
                 color: "white",
                 cursor: "pointer",
                 marginRight: "10px",
@@ -128,17 +131,18 @@ export default function Login() {
               submit
             </button>
             <button
+              onClick={()=>{navigate("/forgetpassword")}}
               style={{
                 flex: 1,
                 padding: "10px",
                 border: "none",
                 borderRadius: "4px",
-                backgroundColor: "#007bff",
+                backgroundColor: "#6c3483",
                 color: "white",
                 cursor: "pointer",
               }}
             >
-              signup
+              ForgetPassword
             </button>
           </div>
         </div>
