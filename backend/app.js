@@ -28,10 +28,16 @@ const {
 } = require("./controllers/authcontroller");
 
 const { sendotp } = require("./controllers/otpcontroller");
-const {createRetreat,getRetreats}=require("./controllers/retreatcontroller")
-const{createFood,getFoods}=require("./controllers/foodcontroller")
-const {createAccommodation,getAccommodations}=require("./controllers/accomodationcontroller")
-const{createBooking}=require("./controllers/bookingcontroller")
+const {
+  createRetreat,
+  getRetreats,
+} = require("./controllers/retreatcontroller");
+const { createFood, getFoods } = require("./controllers/foodcontroller");
+const {
+  createAccommodation,
+  getAccommodations,
+} = require("./controllers/accomodationcontroller");
+const { createBooking } = require("./controllers/bookingcontroller");
 
 // Load environment variables
 dotenv.config({ path: "./config.env" });
@@ -77,7 +83,8 @@ const upload = uploadImages();
 const setImage = (req, res, next) => {
   const uploadSingle = upload.single("photo");
   uploadSingle(req, res, async (err) => {
-    if (err) return res.status(400).json({ success: false, message: err.message });
+    if (err)
+      return res.status(400).json({ success: false, message: err.message });
 
     // console.log(req.file);
     next();
@@ -88,11 +95,12 @@ const setImage = (req, res, next) => {
 const setImages = (req, res, next) => {
   const uploadMultiple = upload.array("photos", 10); // Adjust name and maxCount as needed
   uploadMultiple(req, res, async (err) => {
-    if (err) return res.status(400).json({ success: false, message: err.message });
+    if (err)
+      return res.status(400).json({ success: false, message: err.message });
 
     // console.log(req.files);
     // res.status(200).json({ success: true, fileUrls: req.files.map(file => file.location) });
-    next()
+    next();
   });
 };
 
@@ -141,13 +149,13 @@ app.route("/api/v1/resetpassword/:token").post(resetpassword);
 app.route("/api/v1/updatepassword").patch(protect, updatepassword);
 app.route("/api/v1/updateuser").patch(protect, setImage, updateme);
 app.route("/api/v1/deleteuser").delete(protect, deleteme);
-app.route("/api/v1/createretreat").post(setImages,createRetreat);
-app.route("/api/v1/getretreats").get(getRetreats)
-app.route("/api/v1/createfood").post(setImages,createFood);
-app.route("/api/v1/getfoods").get(getFoods)
-app.route("/api/v1/createaccomodation").post(setImages,createAccommodation);
-app.route("/api/v1/getaccomodations").get(getAccommodations)
-app.route("/api/v1/createbooking").post(protect,createBooking)
+app.route("/api/v1/createretreat").post(setImages, createRetreat);
+app.route("/api/v1/getretreats").get(getRetreats);
+app.route("/api/v1/createfood").post(setImages, createFood);
+app.route("/api/v1/getfoods").get(getFoods);
+app.route("/api/v1/createaccomodation").post(setImages, createAccommodation);
+app.route("/api/v1/getaccomodations").get(getAccommodations);
+app.route("/api/v1/createbooking").post(protect, createBooking);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the API!");
@@ -158,4 +166,4 @@ app.listen(5000, () => {
   console.log("App listening on port 5000");
 });
 
-module.exports=app
+module.exports = app;
