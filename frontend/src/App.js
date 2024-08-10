@@ -14,6 +14,9 @@ import UpdatePassword from "./pages/updatepassword";
 import Review from "./pages/Review";
 import AdminDashboard from "./pages/AdminDashboard";
 import RetreatDashboard from "./pages/RetreatDashboard";
+import AccommodationForm from "./Components/AccomdationForm";
+import FoodForm from "./Components/FoodForm";
+import RetreatForm from "./Components/RetreatForm";
 // import Reviews from "./Components/Reviews";
 
 function App() {
@@ -38,7 +41,6 @@ function App() {
             <Route path="/retreat" element={<RetreatDashboard></RetreatDashboard>}/>
           </Routes>
         </BrowserRouter>
-        {/* <Signup></Signup> */}
       </div>
     </>
   );

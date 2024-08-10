@@ -39,7 +39,7 @@ async function createuser(req, res) {
   }
   const newuser = new user({
     name,
-    role:"admin",
+    role,
     email,
     password,
     conformPassword,
@@ -133,7 +133,7 @@ async function deleteme(req, res) {
 //     });
 //   }
 // }
-async function signin(req, res,next) {
+async function signin(req, res) {
   const { email, password } = req.body;
   try {
     if (!email || !password) {
@@ -150,13 +150,13 @@ async function signin(req, res,next) {
         message: "invalid user or password",
       });
     }
-    if(result.role!==req.body.role){
-      return res.json({
-        status:"fail",
-        message:"invalid user"
-      })
+    // if(result.role!==req.body.role){
+    //   return res.json({
+    //     status:"fail",
+    //     message:"invalid user"
+    //   })
 
-    }
+    // }
     const token = tokencreation(result._id);
     res.json({
       status: "success",

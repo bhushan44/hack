@@ -77,7 +77,7 @@ const upload = uploadImages();
 
 // Single image upload route
 const setImage = (req, res, next) => {
-  const uploadSingle = upload.single("photo");
+  const uploadSingle = upload.single("image");
   uploadSingle(req, res, async (err) => {
     if (err) return res.status(400).json({ success: false, message: err.message });
 
@@ -88,7 +88,7 @@ const setImage = (req, res, next) => {
 
 // Multiple images upload route
 const setImages = (req, res, next) => {
-  const uploadMultiple = upload.array("photos", 10); // Adjust name and maxCount as needed
+  const uploadMultiple = upload.array("images", 10); // Adjust name and maxCount as needed
   uploadMultiple(req, res, async (err) => {
     if (err) return res.status(400).json({ success: false, message: err.message });
 

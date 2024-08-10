@@ -1,6 +1,8 @@
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 function Retreatcen({ data }) {
+  const navigate=useNavigate()
   if (!data || !data.features || !data.styles || !data.skillLevel || !data.benefits || !data.program) {
     return <p>Loading...</p>;
   }
@@ -92,7 +94,9 @@ function Retreatcen({ data }) {
         </div>
         <div>
           <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 mx-1">More</button>
-          <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-800 mx-1">Book</button>
+          <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-800 mx-1" onClick={()=>{
+            navigate("/")
+          }}>Book</button>
         </div>
       </div>
     </div>
