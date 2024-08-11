@@ -76,6 +76,7 @@ async function getusers(req, res) {
       result: {
         docs,
       },
+      
     });
   } catch (e) {
     res.send({
