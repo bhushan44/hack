@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './review.css';
 
 export default function App() {
   const [rating, setRating] = useState(0);

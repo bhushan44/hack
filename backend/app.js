@@ -133,6 +133,7 @@ app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "/public/images")));
 // Define routes
 app.route("/api/v1/users").get(protect, getusers).post(createuser);
+app.route("/api/v1/getusersdata").get(getusers)
 app.route("/api/v1/user").get(protect, getuser);
 // app.route("/api/v1/sendotp").post(sendotp);
 app.route("/api/v1/login").post(signin).get(protect,getuser);
