@@ -1,8 +1,4 @@
 import React from "react";
-import first from "../images/first.jpeg";
-import { SlCalender } from "react-icons/sl";
-import { IoFlagOutline } from "react-icons/io5";
-import { MdOutlineGroup } from "react-icons/md";
 import { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import RetreatDiv from "../Components/RetreatDiv";

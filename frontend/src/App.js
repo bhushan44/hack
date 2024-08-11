@@ -35,7 +35,6 @@ function App() {
             <Route path="/otp" element={<Otp></Otp>} />
             <Route path="/overview/:id" element={<TourOverView></TourOverView>} />
             <Route path="/bookings" element={<Bookings></Bookings>}/>
-            {/* <Route path="/reviews" element={<Reviews/>}></Route> */}
             <Route path="/review" element={<Review/>}></Route>
             <Route path="/admin" element={<AdminDashboard></AdminDashboard>}/>
             <Route path="/retreat" element={<RetreatDashboard></RetreatDashboard>}/>
