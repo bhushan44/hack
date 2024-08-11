@@ -32,7 +32,8 @@ const {createRetreat,getRetreats,getRetreatData}=require("./controllers/retreatc
 const{createFood,getFoods}=require("./controllers/foodcontroller")
 const {createAccommodation,getAccommodations}=require("./controllers/accomodationcontroller")
 const{createBooking}=require("./controllers/bookingcontroller")
-const {getinstructor,createinstructor}=require("./controllers/instructorController")
+const {getinstructor,createinstructor}=require("./controllers/instructorController");
+const { sign } = require("jsonwebtoken");
 
 // Load environment variables
 dotenv.config({ path: "./config.env" });
@@ -76,7 +77,7 @@ const upload = uploadImages();
 
 // Single image upload route
 const setImage = (req, res, next) => {
-  const uploadSingle = upload.single("photo");
+  const uploadSingle = upload.single("image");
   uploadSingle(req, res, async (err) => {
     if (err) return res.status(400).json({ success: false, message: err.message });
 
@@ -87,7 +88,7 @@ const setImage = (req, res, next) => {
 
 // Multiple images upload route
 const setImages = (req, res, next) => {
-  const uploadMultiple = upload.array("photos", 10); // Adjust name and maxCount as needed
+  const uploadMultiple = upload.array("images", 10); // Adjust name and maxCount as needed
   uploadMultiple(req, res, async (err) => {
     if (err) return res.status(400).json({ success: false, message: err.message });
 
@@ -132,9 +133,10 @@ app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "/public/images")));
 // Define routes
 app.route("/api/v1/users").get(protect, getusers).post(createuser);
+app.route("/api/v1/getusersdata").get(getusers)
 app.route("/api/v1/user").get(protect, getuser);
-app.route("/api/v1/sendotp").post(sendotp);
-app.route("/api/v1/login").post(signin);
+// app.route("/api/v1/sendotp").post(sendotp);
+app.route("/api/v1/login").post(signin).get(protect,getuser);
 app.route("/api/v1/signin").post(login);
 app.route("/api/v1/forgetpassword").post(forgetpasswordresettoken);
 app.route("/api/v1/resetpassword/:token").post(resetpassword);

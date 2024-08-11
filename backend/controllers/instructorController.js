@@ -9,11 +9,12 @@ async function createinstructor(req,res){
             qualifications:qualifications?qualifications.split(",").map(quali=>quali.trim()):[],
             photo:images
         })
-        const data = instructor.save();
+        const data =await instructor.save();
+        console.log(data);
         res.json({
       status: "success",
       message: "Instructor created successfully",
-      data:data
+      data
     })
     }catch(e){
         res.json({

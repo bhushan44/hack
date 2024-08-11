@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import Otp from "../Components/Otp";
 import { useNavigate } from "react-router-dom";
 export default function Login() {
@@ -22,7 +21,6 @@ export default function Login() {
           password,
         }),
       });
-
       const data = await res.json();
       console.log(data);
       if (data.status === "fail") {
@@ -32,7 +30,7 @@ export default function Login() {
         // setState(true);
         sessionStorage.setItem("token", data.token);
         // console.log(localStorage.getItem("token"));
-        navigate("/");
+        navigate('/')
       }
 
       //   if (data.status === "failure" && data.statusCode === 400) {

@@ -3,7 +3,6 @@ const Accommodation = require("../models/Accomodation");
 async function createAccommodation(req, res) {
   // Assuming files are uploaded and stored in req.files
   const images = req.files?req.files.map(file => file.location):[]; // Adjust based on your file upload setup
-
   // Convert comma-separated styles into an array
   const styles = req.body.styles ? req.body.styles.split(',').map(style => style.trim()) : [];
 
@@ -15,7 +14,7 @@ async function createAccommodation(req, res) {
       description,
       price,
       shared: shared === 'true', // Convert to boolean if needed
-      amenities: amenities ? amenities.split(',').map(amenity => amenity.trim()) : [], // Convert comma-separated string to array if needed
+      amenities, //amenities ? amenities.split(',').map(amenity => amenity.trim()) : [], // Convert comma-separated string to array if needed
       images,
       styles,
       retreatcenter

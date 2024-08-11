@@ -28,8 +28,6 @@ export default function Header() {
 
         const userData = await response.json();
         setData(userData.data);
-        
-        console.log(userData);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -63,13 +61,37 @@ export default function Header() {
             >
               Logout
             </button>
-            <Link to="/dashboard">
-              <img
-                src={data?.photo}
-                alt="User"
-                className="h-12 w-12 rounded-full"
-              />
-            </Link>
+            <div>
+            <>
+              {data.role === "admin" && (
+                  <Link to="/admin">
+                      <img
+                        src={data.photo}
+                        alt="User"
+                        className="h-12 w-12 rounded-full"
+                      />
+                    </Link>
+                  )}
+                  {data.role === "user" && (
+                    <Link to="/dashboard">
+                      <img
+                        src={data.photo}
+                        alt="User"
+                        className="h-12 w-12 rounded-full"
+                      />
+                    </Link>
+                  )}
+                  {data.role === "instructor" && (
+                    <Link to="/retreat">
+                      <img
+                        src={data.photo}
+                        alt="User"
+                        className="h-12 w-12 rounded-full"
+                      />
+                    </Link>
+                  )}
+                </>
+            </div>
             <p>{data?.name}</p>
           </>
         )}

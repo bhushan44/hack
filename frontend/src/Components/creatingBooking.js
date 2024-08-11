@@ -8,7 +8,7 @@ export default function CreatingBooking({makePayment,images,duration}) {
         <div> 
             <img src={`http://localhost:5000/images/tours/${images[0]}`} alt='bhu'  className='w-[150px] h-[150px] rounded-[50%] left-10 top-16 absolute'></img>
             <img src={`http://localhost:5000/images/tours/${images[1]}`} alt='bhu'  className='w-[150px] h-[150px] rounded-[50%] left-16  top-16 absolute'></img>
-              <img src={`http://localhost:5000/images/tours/${images[2]}`} alt='bhu'  className='w-[150px] h-[150px] rounded-[50%] left-24 top-16  absolute'></img>
+            <img src={`http://localhost:5000/images/tours/${images[2]}`} alt='bhu'  className='w-[150px] h-[150px] rounded-[50%] left-24 top-16  absolute'></img>
 
         </div>
         <div className='relative left-24'><p className='text-2xl text-green-500'>what are you waiting for?</p><p>{duration}days adventure.infinite memories.</p></div>
