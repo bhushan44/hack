@@ -4,6 +4,7 @@ const Otp = require("../models/otpmodel");
 const { sendemail } = require("../utils/email");
 const user = require("../models/usermodel");
 const jswebtoken = require("jsonwebtoken");
+const { nextTick } = require("process");
 dotenv.config({ path: "../config.env" });
 function tokencreation(id) {
   const token = jswebtoken.sign({ id: id }, process.env.SECRET, {
@@ -22,9 +23,11 @@ function filterObj(obj, ...roles) {
   return newobj;
 }
 async function createuser(req, res) {
-  const { name, email, password, conformPassword, changepasswordat, role } =
+  const { name, email, password, conformPassword, changepasswordat } =
     req.body;
   console.log(req.body, "body");
+  
+  const role= "user";
   // const date = new Date(changepasswordat);
   // console.log(date);
   const userdata=await user.findOne({email:req.body.email})
@@ -73,6 +76,7 @@ async function getusers(req, res) {
       result: {
         docs,
       },
+      
     });
   } catch (e) {
     res.send({
@@ -141,21 +145,26 @@ async function signin(req, res) {
     }
     console.log("E", email);
     const result = await user.findOne({ email });
-    console.log(result.password);
-
     if (!result || !(await result.correctpassword(password, result.password))) {
       return res.json({
         status: "fail",
         message: "invalid user or password",
       });
     }
+    // if(result.role!==req.body.role){
+    //   return res.json({
+    //     status:"fail",
+    //     message:"invalid user"
+    //   })
+
+    // }
     const token = tokencreation(result._id);
     res.json({
       status: "success",
       token,
     });
     // req.user = result;
-    // console.log(req.user);
+    // next()
   } catch (e) {
     res.json({
       status: "error",

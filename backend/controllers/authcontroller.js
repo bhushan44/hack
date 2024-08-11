@@ -1,3 +1,4 @@
+
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const user = require("../models/usermodel");
@@ -47,8 +48,7 @@ function restrictTo(...roles) {
     if (!roles.includes(req.user.role)) {
       return res.json("you dont have permission to perform thsi action");
     }
-
-    next();
+    next()
   };
 }
 async function forgetpasswordresettoken(req, res) {
@@ -175,7 +175,6 @@ async function updatepassword(req, res) {
     token,
   });
 }
-
 module.exports = {
   protect,
   restrictTo,
