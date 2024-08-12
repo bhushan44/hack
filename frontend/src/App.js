@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import { useState } from "react";
 import Signup from "./pages/signup";
@@ -14,7 +14,7 @@ import UpdatePassword from "./pages/updatepassword";
 import Review from "./pages/Review";
 import AdminDashboard from "./pages/AdminDashboard";
 import RetreatDashboard from "./pages/RetreatDashboard";
-// import Reviews from "./Components/Reviews";
+// import Reviews from "./Components/Reviews"; 
 
 function App() {
   const [name, setName] = useState(" ");
@@ -34,7 +34,7 @@ function App() {
             <Route path="/bookings" element={<Bookings></Bookings>}/>
             {/* <Route path="/reviews" element={<Reviews/>}></Route> */}
             <Route path="/review" element={<Review/>}></Route>
-            <Route path="/admin" element={<AdminDashboard></AdminDashboard>}/>
+            <Route path="/admindashboard" element={<AdminDashboard></AdminDashboard>}/>
             <Route path="/retreat" element={<RetreatDashboard></RetreatDashboard>}/>
           </Routes>
         </BrowserRouter>
