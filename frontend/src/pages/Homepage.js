@@ -15,6 +15,7 @@ export default function Homepage() {
 
   }
   const [data, setData] = useState([]);
+  // setData([])
   const retData=async()=>{
     try{
       const refetch= await fetch('http://localhost:5000/api/v1/getretreats',{
@@ -32,6 +33,7 @@ export default function Homepage() {
   }, []);
   return (
     <div className="bg-slate-200">
+
       <Header></Header>
       <Retreatscroll/>
       { retreatdata.map((data,index)=>{
@@ -39,6 +41,7 @@ export default function Homepage() {
       })
       }
       <Footer/>
+      {/* {setRetreatData([])} */}
     </div>
   );
 }

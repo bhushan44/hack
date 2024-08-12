@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import { useState } from "react";
 import Signup from "./pages/signup";
@@ -18,6 +18,7 @@ import AccommodationForm from "./Components/AccomdationForm";
 import FoodForm from "./Components/FoodForm";
 import RetreatForm from "./Components/RetreatForm";
 // import Reviews from "./Components/Reviews";
+// import Reviews from "./Components/Reviews"; 
 
 function App() {
   const [name, setName] = useState(" ");
@@ -36,7 +37,7 @@ function App() {
             <Route path="/overview/:id" element={<TourOverView></TourOverView>} />
             <Route path="/bookings" element={<Bookings></Bookings>}/>
             <Route path="/review" element={<Review/>}></Route>
-            <Route path="/admin" element={<AdminDashboard></AdminDashboard>}/>
+            <Route path="/admindashboard" element={<AdminDashboard></AdminDashboard>}/>
             <Route path="/retreat" element={<RetreatDashboard></RetreatDashboard>}/>
             <Route path="/accomdation" element={<AccommodationForm/>}/>
             <Route path="/food" element={<FoodForm/>}/>

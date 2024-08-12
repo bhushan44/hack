@@ -17,3 +17,5 @@ export default function CreatingBooking({makePayment,images,duration}) {
     </div>
   )
 }
+
+

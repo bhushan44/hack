@@ -107,7 +107,6 @@ export default function Bookings() {
                     // console.log(el._id,el.imageCover)
                     details(el.tour._id)
                   }}>
-
                     details
                   </button>
                 </div>
