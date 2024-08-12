@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
-import CreatingBooking from "../Components/CreatingBooking";
+import CreatingBooking from "../Components/creatingBooking";
+
 
 export default function Bookings() {
   const navigate=useNavigate()

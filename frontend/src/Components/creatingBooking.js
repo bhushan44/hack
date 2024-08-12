@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const creatingBooking = () => {
+export default function CreatingBooking(){
   return (
     <div>creatingBooking</div>
   )
