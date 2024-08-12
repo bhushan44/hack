@@ -81,7 +81,7 @@ function Retreatcen({ data }) {
           </span>
         </div>
         <div className="retreat-buttons">
-          <button className="book-button" onClick={() =>(!sessionStorage.getItem("token"))?navigate("/"):navigate("/bookings")}>Book</button>
+          <button className="book-button" onClick={() =>(!sessionStorage.getItem("token"))?navigate("/login"):navigate("/bookings")}>Book</button>
         </div>
       </div>
     </div>

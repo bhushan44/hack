@@ -55,7 +55,7 @@ export default function Header() {
         ) : (
           <>
             <button
-              className="border-2 border-solid rounded-lg p-2"
+              className="border-2 border-solid text-white rounded-lg p-2"
               onClick={() => {
                 sessionStorage.removeItem("token");
                 navigation("/");
