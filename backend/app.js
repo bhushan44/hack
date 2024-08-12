@@ -153,7 +153,11 @@ app.route("/api/v1/createbooking").post(protect,createBooking)
 app.route("/api/:userid").get(getRetreatData)
 app.route("/api/v1/getinstructor").get(getinstructor)
 app.route("/api/v1/createinstructor").post(setImage,createinstructor)
-app.route("/api/v1/checkout").post(protect,getCheckOutSession)
+// app.route("/createpayment").post(async(req,res)=>{
+//   console.log(req.body),
+//   console.log(req.headers)
+// })
+app.route("/createpayment").post(getCheckOutSession)
 app.get("/", (req, res) => {
   res.send("Welcome to the API!");
 });

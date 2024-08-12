@@ -20,7 +20,6 @@ function TourOverView(){
   useEffect(()=>{
     RetreatInd()
   },[])
-  console.log(retData)
   return<>
   <Header/>
   <Retreatcen data={retData}/>

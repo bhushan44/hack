@@ -86,9 +86,7 @@ async function getusers(req, res) {
   }
 }
 
-async function getuser(
-  req,res
-) {
+async function getuser(req,res) {
   const userdetails=await user.findById(req.user.id)
   res.json({
     data:userdetails

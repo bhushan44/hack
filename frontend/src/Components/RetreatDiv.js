@@ -1,4 +1,3 @@
-import BGimg from '../images/BGimg.png';
 function RetreatDiv({da,details}) {
     return (
         <div className="flex flex-col items-center border border-gray-300 rounded-lg overflow-hidden shadow-md w-400px m-5 p-5 bg-white text-center" >

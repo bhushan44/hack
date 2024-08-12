@@ -19,7 +19,7 @@ async function protect(req, res, next) {
   }
   let decoded;
   try {
-    decoded = jwt.verify(token, "BHUSHAN");
+    decoded = jwt.verify(token, "PRAVEEN");
 
     // next();
   } catch (e) {

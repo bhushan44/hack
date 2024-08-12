@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
-import CreatingBooking from "../Components/creatingBooking";
+import CreatingBooking from "../Components/CreatingBooking";
 
 export default function Bookings() {
   const navigate=useNavigate()
@@ -32,6 +32,7 @@ export default function Bookings() {
     <div className="bg-slate-200">
       <Header></Header>
       <main className="relative flex flex-row flex-wrap justify-center text-slate-500   p-10">
+        <CreatingBooking/>
       </main>
     </div>
   );

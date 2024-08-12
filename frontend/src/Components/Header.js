@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../images/yoga.jpeg';
+import { FaSearch } from 'react-icons/fa';
 
 export default function Header() {
   const [data, setData] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
   const navigation = useNavigate();
+  const handleClick = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   function signup() {
     navigation('/signup');
@@ -41,11 +46,22 @@ export default function Header() {
   return (
     <header className="bg-slate-600 w-full h-auto flex flex-col md:flex-row items-center justify-between p-4 shadow-md">
       <img src={logo} alt="Yoga Logo" className="h-12 mb-4 md:mb-0" />
-      <input
-        type="text"
-        placeholder="Search..."
-        className="flex-1 mx-4 p-2 border border-gray-300 rounded text-black"
-      />
+      <div className="relative">
+        <button 
+          onClick={handleClick} 
+          className="flex items-center p-2 border border-gray-300 rounded bg-white text-black focus:outline-none"
+        >
+          <FaSearch className="text-gray-500" />
+        </button>
+        {isExpanded && (
+          <input
+            type="text"
+            placeholder="Search..."
+            className="absolute top-full left-0 w-full mt-2 p-2 border border-gray-300 rounded text-black"
+            autoFocus
+          />
+        )}
+      </div>
       <div className="flex flex-col md:flex-row items-center gap-4">
         {!sessionStorage.getItem("token") ? (
           <>

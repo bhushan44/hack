@@ -3,12 +3,46 @@ import { CiLocationOn } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import ImageSlider from "./ImageSlider";
 import './Retreatcen.css'; // Ensure this CSS file is imported
+import { loadStripe } from '@stripe/stripe-js';
 
 function Retreatcen({ data }) {
   const navigate = useNavigate(); 
+
   if (!data || !data.features || !data.styles || !data.skillLevel || !data.benefits || !data.program) {
     return <p>Loading...</p>;
   }
+
+  const makePayment = async () => {
+    try {
+      const stripe = await loadStripe('pk_test_51PmqlbSEMPj85mjmZVDTrSBIaBbQsRdi9qFITo4E6wA1RVVpuqrxwbpd61ipqweFzAkXnmt2XNCIlQQQfOJVfTuB00rMzhe7PH');
+      const body = {data};
+      
+      const response = await fetch("http://localhost:5000/createpayment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${sessionStorage.getItem("token")}`
+        },
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const session = await response.json();
+      console.log(session);
+      const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
+
+      if (error) {
+        console.error("Stripe Checkout Error:", error);
+      }
+    } catch (error) {
+      console.error("Payment Error:", error);
+      // Handle payment error (e.g., show an error message to the user)
+    }
+  };
+
   return (
     <div className="retreat-container">
       <div className="retreat-image-slider">
@@ -51,7 +85,7 @@ function Retreatcen({ data }) {
         <div className="retreat-benefits">
           <span>Benefits</span>
           <ul className="retreat-list">
-            {data.benefits && data.benefits.length > 0 ? (
+            {data.benefits.length > 0 ? (
               data.benefits.map((benefit, index) => (
                 <li key={index}>{benefit}</li>
               ))
@@ -81,7 +115,16 @@ function Retreatcen({ data }) {
           </span>
         </div>
         <div className="retreat-buttons">
-          <button className="book-button" onClick={() =>(!sessionStorage.getItem("token"))?navigate("/login"):navigate("/bookings")}>Book</button>
+          <button className="book-button" onClick={() => {
+            const token = sessionStorage.getItem("token");
+            if (!token) {
+              navigate("/"); // Redirect to login or home if not logged in
+            } else {
+              makePayment();
+            }
+          }}>
+            Book
+          </button>
         </div>
       </div>
     </div>

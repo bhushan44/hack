@@ -2,7 +2,7 @@ const User=require("../models/usermodel")
 const Accommodation=require("../models/Accomodation")
 const Retreat=require("../models/retreatschema")
 const dotenv=require("dotenv")
-const stripe = require("stripe")(process.env.SRIPE_SECREAT_KEY);
+const stripe = require("stripe")("sk_test_51PmqlbSEMPj85mjmVDwkiMyhwzA4gMFlkg0haf5watHFIJ5kkgJvUqa01hLdQJn5dZqqwXLUrpwHJ3U7vnnV3d5H005QURbfJ0");
 dotenv.config("./config.env")
 const getBookings = async (req, res) => {
   try {
@@ -23,48 +23,40 @@ const getBookings = async (req, res) => {
   }
 };
 const getCheckOutSession = async (req, res) => {
-  try {
-    console.log(req.user)
-      const userId = req.user._id;
-
-      // Find the tour by ID (this assumes you have a Tour model defined)
-      const tour = await user.findById(userId);
-
-      // Create checkout session
+    try {
       const session = await stripe.checkout.sessions.create({
-          payment_method_types: ['card'],
-          mode: 'payment',
-          success_url: `http://localhost:3000/bookings`,
-          cancel_url: `http://localhost:3000/homepage`,
-          customer_email: req.user.email,
-          client_reference_id: tourId,
-          line_items: [
-              {
-                  price_data: {
-                      currency: 'inr',
-                      product_data: {
-                          name: tour.name,
-                          description: tour.summary,
-                          images: [tour.imageCover]
-                      },
-                      unit_amount: tour.price * 100,
+        payment_method_types: ['card'],
+        line_items: [
+          {
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: req.body.data.name,
+                metadata: {
+                    retreatId: req.body.data._id,
+                    retreat_name: req.body.data.name,
                   },
-                  quantity: 1
-              }
-          ]
+              },
+              unit_amount: req.body.data.price * 100, // Convert to cents
+            },
+            quantity: 1,
+          },
+        ],
+        mode: 'payment',
+        success_url: 'http://localhost:3000/crete',
+        cancel_url: 'http://localhost:3000/',
+        // metadata: {
+        //   retreatId: req.body.data._id,
+        //   retreat_name: req.body.data.name,
+        // },
       });
-
-      res.status(200).json({
-          status: 'success',
-          session
-      });
-  } catch (err) {
-      res.status(400).json({
-          status: 'fail',
-          message: err.message
-      });
-  }
-};
+  
+      res.json({ id: session.id });
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
 const createBooking = async (req, res) => {
     try {
       // Extract data from the request body
