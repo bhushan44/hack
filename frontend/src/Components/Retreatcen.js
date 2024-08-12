@@ -6,7 +6,7 @@ function Retreatcen({ data }) {
   if (!data || !data.features || !data.styles || !data.skillLevel || !data.benefits || !data.program) {
     return <p>Loading...</p>;
   }
-  console.log(data.benefits)
+  console.log(data)
   return (
     <div className="flex flex-wrap p-5 max-w-4xl mx-auto border border-gray-300 rounded-lg bg-white">
       <div className="flex-1 p-2 mb-4">
