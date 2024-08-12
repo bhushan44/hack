@@ -31,7 +31,7 @@ const { sendotp } = require("./controllers/otpcontroller");
 const {createRetreat,getRetreats,getRetreatData}=require("./controllers/retreatcontroller")
 const{createFood,getFoods}=require("./controllers/foodcontroller")
 const {createAccommodation,getAccommodations}=require("./controllers/accomodationcontroller")
-const{createBooking}=require("./controllers/bookingcontroller")
+const{createBooking,getCheckOutSession,getBookings}=require("./controllers/bookingcontroller")
 const {getinstructor,createinstructor}=require("./controllers/instructorController");
 const { sign } = require("jsonwebtoken");
 
@@ -153,6 +153,7 @@ app.route("/api/v1/createbooking").post(protect,createBooking)
 app.route("/api/:userid").get(getRetreatData)
 app.route("/api/v1/getinstructor").get(getinstructor)
 app.route("/api/v1/createinstructor").post(setImage,createinstructor)
+app.route("/api/v1/checkout").post(protect,getCheckOutSession)
 app.get("/", (req, res) => {
   res.send("Welcome to the API!");
 });

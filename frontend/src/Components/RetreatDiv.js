@@ -1,6 +1,7 @@
+import BGimg from '../images/BGimg.png';
 function RetreatDiv({da,details}) {
     return (
-        <div className="flex flex-col items-center border border-gray-300 rounded-lg overflow-hidden shadow-md w-400px m-5 p-5 bg-white text-center">
+        <div className="flex flex-col items-center border border-gray-300 rounded-lg overflow-hidden shadow-md w-400px m-5 p-5 bg-white text-center" >
             <div className="w-full max-w-[150px] border-b border-gray-300">
                 <img src={da.images[0]} alt="Center" className="w-full h-auto" />
             </div>

@@ -5,11 +5,13 @@ import logo from '../images/yoga.jpeg';
 export default function Header() {
   const [data, setData] = useState("");
   const navigation = useNavigate();
-  function signup(){
-    navigation('/signup')
+
+  function signup() {
+    navigation('/signup');
   }
-  function login(){
-    navigation('/login')
+
+  function login() {
+    navigation('/login');
   }
 
   useEffect(() => {
@@ -37,18 +39,18 @@ export default function Header() {
   }, [sessionStorage.getItem("token")]);
 
   return (
-    <header className="bg-slate-600 w-full h-20 flex items-center justify-between  p-4 shadow-md">
-      <img src={logo} alt="Yoga Logo" className="h-12" />
-      <input 
-        type="text" 
-        placeholder="Search..." 
+    <header className="bg-slate-600 w-full h-auto flex flex-col md:flex-row items-center justify-between p-4 shadow-md">
+      <img src={logo} alt="Yoga Logo" className="h-12 mb-4 md:mb-0" />
+      <input
+        type="text"
+        placeholder="Search..."
         className="flex-1 mx-4 p-2 border border-gray-300 rounded text-black"
       />
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col md:flex-row items-center gap-4">
         {!sessionStorage.getItem("token") ? (
           <>
-            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700" onClick={()=>{login()}}>Login</button>
-            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700" onClick={()=>{signup()}}>Signup</button>
+            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700" onClick={login}>Login</button>
+            <button className="border-2 border-solid rounded-lg p-2 text-white bg-blue-500 hover:bg-blue-700" onClick={signup}>Signup</button>
           </>
         ) : (
           <>
@@ -61,38 +63,36 @@ export default function Header() {
             >
               Logout
             </button>
-            <div>
-            <>
+            <div className="flex flex-col items-center">
               {data.role === "admin" && (
-                  <Link to="/admin">
-                      <img
-                        src={data.photo}
-                        alt="User"
-                        className="h-12 w-12 rounded-full"
-                      />
-                    </Link>
-                  )}
-                  {data.role === "user" && (
-                    <Link to="/dashboard">
-                      <img
-                        src={data.photo}
-                        alt="User"
-                        className="h-12 w-12 rounded-full"
-                      />
-                    </Link>
-                  )}
-                  {data.role === "instructor" && (
-                    <Link to="/retreat">
-                      <img
-                        src={data.photo}
-                        alt="User"
-                        className="h-12 w-12 rounded-full"
-                      />
-                    </Link>
-                  )}
-                </>
+                <Link to="/admin">
+                  <img
+                    src={data.photo}
+                    alt="User"
+                    className="h-12 w-12 rounded-full mb-2"
+                  />
+                </Link>
+              )}
+              {data.role === "user" && (
+                <Link to="/dashboard">
+                  <img
+                    src={data.photo}
+                    alt="User"
+                    className="h-12 w-12 rounded-full mb-2"
+                  />
+                </Link>
+              )}
+              {data.role === "instructor" && (
+                <Link to="/retreat">
+                  <img
+                    src={data.photo}
+                    alt="User"
+                    className="h-12 w-12 rounded-full mb-2"
+                  />
+                </Link>
+              )}
+              <p className="text-white">{data?.name}</p>
             </div>
-            <p>{data?.name}</p>
           </>
         )}
       </div>

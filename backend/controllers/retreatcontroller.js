@@ -41,7 +41,7 @@ async function createRetreat(req, res) {
       skillLevel: skillLevelArray,
       benefits: benefitsArray,
       program: programArray,
-      price: parseFloat(price), // Ensure price is a number
+      price: parseFloat(price),
       images: urls,
       instructors:["66882baab889bd22677f0466"],
 
@@ -73,7 +73,7 @@ async function getRetreats(req, res) {
 }
 async function getRetreatData(req,res){
   try{
-    const data=await Retreat.findById(req.params.userid)
+    const data=await Retreat.findById(req.params.userid).populate("instructors")
     res.status(200).json(data);
   }catch(e){
     console.log(e)

@@ -1,19 +1,80 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function CreatingBooking({makePayment,images,duration}) {
-  const navigation=useNavigate()
+export default function CreatingBooking() {
+  const navigate = useNavigate();
+  const [userId, setUserId] = useState('');
+  const [retreatId, setRetreatId] = useState('');
+  const [userMail, setUserMail] = useState('');
+  const [url, setUrl] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/api/v1/checkout", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`
+        },
+        body: JSON.stringify({
+          userid: userId,
+          retreatid: retreatId,
+          usermail: userMail
+        })
+      });
+
+      const data = await response.json();
+      console.log(data)
+      if (data.url) {
+        setUrl(data.url);
+        window.location.href = data.url; // Redirect to Stripe Checkout
+      } else {
+        console.error('Failed to create checkout session');
+      }
+    } catch (error) {
+      console.error('Error during payment process:', error);
+    }
+  };
+
   return (
-    <div className='flex items-center justify-center h-[300px] w-[900px] gap-20 bg-white relative'>
-        <div> 
-            <img src={`http://localhost:5000/images/tours/${images[0]}`} alt='bhu'  className='w-[150px] h-[150px] rounded-[50%] left-10 top-16 absolute'></img>
-            <img src={`http://localhost:5000/images/tours/${images[1]}`} alt='bhu'  className='w-[150px] h-[150px] rounded-[50%] left-16  top-16 absolute'></img>
-            <img src={`http://localhost:5000/images/tours/${images[2]}`} alt='bhu'  className='w-[150px] h-[150px] rounded-[50%] left-24 top-16  absolute'></img>
-
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor='userid'>UserID</label>
+          <input
+            id='userid'
+            type='text'
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
+            required
+          />
         </div>
-        <div className='relative left-24'><p className='text-2xl text-green-500'>what are you waiting for?</p><p>{duration}days adventure.infinite memories.</p></div>
-         {sessionStorage.getItem("token")? <button onClick={makePayment} className=' relative left-32 border-solid bg-green-400 p-2 border-black rounded-md'>book  tour now</button>
-         : <button className=' relative left-32 border-solid bg-green-400 p-2 border-black rounded-md' onClick={()=>{navigation("/login")}}>login to book your tour</button>}
+        <div>
+          <label htmlFor='retreatid'>RetreatID</label>
+          <input
+            id='retreatid'
+            type='text'
+            value={retreatId}
+            onChange={(e) => setRetreatId(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor='usermail'>Usermail</label>
+          <input
+            id='usermail'
+            type='email'
+            value={userMail}
+            onChange={(e) => setUserMail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <button type='submit'>Submit Booking</button>
+        </div>
+      </form>
+      {url && <p>Redirecting to payment page...</p>}
     </div>
-  )
+  );
 }

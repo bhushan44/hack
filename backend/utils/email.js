@@ -4,14 +4,14 @@ const sendemail = (options) => {
     service: "gmail",
     host: "smtp.gmail.com",
     port: 587,
-    secure: false, // Use `true` for port 465, `false` for all other ports
+    secure: false,
     auth: {
-      user: "bhushanmandala456@gmail.com",
-      pass: "gvgq rnpq vnfd cyjf",
+      user: "praveenjeeru68@gmail.com",
+      pass: "rzzc tqlj coek uhgw",
     },
   });
   const emailoptions = {
-    from: "bhushanmandala456@gmail.com",
+    from: "praveenjeeru68@gmail.com",
     to: options.email,
     subject: options.subject,
     text: options.message,

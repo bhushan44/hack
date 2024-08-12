@@ -1,0 +1,108 @@
+.retreat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto;
+  background: #928a8a;
+}
+
+.retreat-image-slider {
+  width: 100%;
+  max-width: 800px; /* Adjust based on your design */
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.retreat-details {
+  width: 100%;
+  max-width: 800px; /* Adjust based on your design */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.retreat-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.retreat-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.retreat-location-icon {
+  color: #4a4a4a; /* Adjust color as needed */
+}
+
+.retreat-description, .retreat-features, .retreat-styles, .retreat-skill-level, .retreat-benefits, .retreat-program {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.retreat-description span, .retreat-features span, .retreat-styles span, .retreat-skill-level span, .retreat-benefits span, .retreat-program span {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.retreat-list {
+  list-style: disc;
+  padding-left: 20px;
+  text-align: center;
+  margin: 0; /* Remove default margin */
+}
+
+.retreat-price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2d2d2d;
+  text-align: center;
+}
+
+.retreat-reviews {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.retreat-reviews h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.retreat-reviews span {
+  margin-left: 8px;
+}
+
+.retreat-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.book-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid #28a745;
+  background-color: #28a745;
+  color: white;
+}
+
+.book-button:hover {
+  background-color: #218838;
+}

@@ -17,6 +17,7 @@ import RetreatDashboard from "./pages/RetreatDashboard";
 import AccommodationForm from "./Components/AccomdationForm";
 import FoodForm from "./Components/FoodForm";
 import RetreatForm from "./Components/RetreatForm";
+import CreatingBooking from "./Components/creatingBooking";
 // import Reviews from "./Components/Reviews";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/accomdation" element={<AccommodationForm/>}/>
             <Route path="/food" element={<FoodForm/>}/>
             <Route path="/retreatform" element={<RetreatForm/>}/>
+            <Route path='/payment'element={<CreatingBooking/>}/>
           </Routes>
         </BrowserRouter>
       </div>
